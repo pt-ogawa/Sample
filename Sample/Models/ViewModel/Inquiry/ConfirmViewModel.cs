@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Sample.Models.ViewModel.Inquiry
 {
-    public class ConfirmViewModel : IValidatableObject
+    public class ConfirmViewModel
     {
         public string Name { get; set; }
         public string Age { get; set; }
@@ -21,16 +21,6 @@ namespace Sample.Models.ViewModel.Inquiry
             Sex = sex;
             InquiryTypes = inquiryTypes;
             Content = content;
-        }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            //入力パスワードと検証用パスワードが異なるかを検証する
-            //if (!Password.Equals(ValidatePassword))
-            //{
-            //    //エラー内容を返却する
-            yield return new ValidationResult("Password is not match.", new[] { "ValidatePassword" });
-            //}
         }
     }
 }
