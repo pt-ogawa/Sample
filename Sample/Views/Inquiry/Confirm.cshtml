@@ -1,0 +1,53 @@
+﻿@model Sample.Models.ViewModel.Inquiry.ConfirmViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>お問い合わせフォーム</h2>
+
+<p>お問い合わせフォームにご記入ください</p>
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>名前</th>
+            <td>
+                @Model.Name
+            </td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            <td>
+                @Model.Sex
+            </td>
+        </tr>
+        <tr>
+            <th>年齢</th>
+            <td>
+                @Model.Age
+            </td>
+        </tr>
+        <tr>
+            <th>お問い合わせ種別</th>
+            <td>
+                @foreach (var InquiryType in Model.InquiryTypes)
+                {
+                    @InquiryType <br>
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <th>お問い合わせ内容</th>
+            <td>
+                @Model.Content
+            </td>
+        </tr>
+    </table>
+    <a href="@Url.Action("Input", "Inquiry")"><input type="button" value="戻る"></a>
+    <input type="submit" value="送信">
+}

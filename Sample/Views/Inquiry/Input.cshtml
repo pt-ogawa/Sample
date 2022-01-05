@@ -1,0 +1,85 @@
+﻿@model Sample.Models.ViewModel.Inquiry.InputViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@{
+    ViewBag.Title = "About";
+}
+<h2>お問い合わせフォーム</h2>
+
+<p>お問い合わせフォームにご記入ください</p>
+@using (Html.BeginForm())
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>名前</th>
+            <td>
+                @*テキストフィールド*@
+                @Html.TextBoxFor(model => model.Name)
+                <div class="error-message">
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            <td>
+                @*ラジオボタン*@
+                @Html.RadioButtonFor(model => model.Sex, "男性")
+                男性
+                @Html.RadioButtonFor(model => model.Sex, "女性")
+                女性
+                <div class="error-message">
+                    @Html.ValidationMessageFor(model => model.Sex)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>年齢</th>
+            <td>
+                @*セレクトボックス*@
+                @Html.DropDownListFor(
+                  model => model.Age,
+                  new SelectListItem[] {
+                    new SelectListItem() { Value="10代", Text="10代" },
+                    new SelectListItem() { Value="20代", Text="20代" },
+                    new SelectListItem() { Value="30代", Text="30代" }
+                  },
+                  "選択してください",
+                  new { @class = "list" }
+                )
+                <div class="error-message">
+                    @Html.ValidationMessageFor(model => model.Age)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th>お問い合わせ種別</th>
+            <td>
+                @*チェックボックス*@
+                @foreach (var inquiryType in new List<string> { "販売前の商品の問い合わせ", "販売中の商品のお問い合わせ", "商品の故障について" })
+                {
+                    // checkboxのvalueでstringを使用したい場合はヘルパーを使用せずinputタグで実装
+                    <input type="checkbox" name="InquiryTypes" value="@inquiryType" @(Model.InquiryTypes.Contains(inquiryType) ? "checked='checked'" : "")> @inquiryType<br>
+                }
+                <div class="error-message">
+                    @Html.ValidationMessageFor(model => model.InquiryTypes)
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <th>お問い合わせ内容</th>
+            <td>
+                @*テキストエリア*@
+                @Html.TextAreaFor(model => model.Content)
+                <div>
+                    @Html.ValidationMessageFor(model => model.Content)
+                </div>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="送信">
+}
