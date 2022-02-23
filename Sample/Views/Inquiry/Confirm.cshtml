@@ -1,4 +1,5 @@
 ﻿@model Sample.Models.ViewModel.Inquiry.ConfirmViewModel
+@using Sample.Defines;
 
 @{
     ViewBag.Title = "Home Page";
@@ -22,13 +23,13 @@
         <tr>
             <th>性別</th>
             <td>
-                @Model.Sex
+                @Model.Sex.GetLabel()
             </td>
         </tr>
         <tr>
             <th>年齢</th>
             <td>
-                @Model.Age
+                @Model.Age.GetLabel()
             </td>
         </tr>
         <tr>
@@ -36,7 +37,7 @@
             <td>
                 @foreach (var InquiryType in Model.InquiryTypes)
                 {
-                    @InquiryType <br>
+                    @InquiryType.GetLabel() <br>
                 }
             </td>
         </tr>

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using Sample.Domains.Applications;
 using Sample.UseCases.Inquiry;
+using Sample.Defines;
 
 namespace Sample.Controllers
 {

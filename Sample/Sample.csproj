@@ -125,6 +125,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\InquiryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Defines\Defines.cs" />
+    <Compile Include="Defines\EnumAttribute.cs" />
     <Compile Include="Domains\Domains\IInquiryRepository.cs" />
     <Compile Include="Domains\Domains\Inquiry.cs" />
     <Compile Include="Domains\Applications\SendInquiryInteractor.cs" />
